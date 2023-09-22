@@ -14,15 +14,20 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {}
 
   getProducts(): Observable<ListResponseModule<Product>> {
-    let newPath=this.apiUrl + "products/getall"
+    let newPath = this.apiUrl + 'products/getall';
     return this.httpClient.get<ListResponseModule<Product>>(newPath);
   }
-  getProductsByCategory(categoryId:number): Observable<ListResponseModule<Product>> {
-    let newPath=this.apiUrl + "products/getbycategory?categoryId=" + categoryId
+  getProductsByCategory(
+    categoryId: number
+  ): Observable<ListResponseModule<Product>> {
+    let newPath =
+      this.apiUrl + 'products/getbycategory?categoryId=' + categoryId;
     return this.httpClient.get<ListResponseModule<Product>>(newPath);
   }
-  add(product:Product):Observable<ResponseModel>{
-    
-    return this.httpClient.post<ResponseModel>("https://localhost:44396/api/Products/add",product);
+  add(product: Product): Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(
+      'https://localhost:44396/api/Products/add',
+      product
+    );
   }
 }
